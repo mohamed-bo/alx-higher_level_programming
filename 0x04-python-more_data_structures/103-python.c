@@ -2,6 +2,9 @@
 #include <stdio.h>
 #include <Python.h>
 
+void print_python_list(PyObject *p);
+void print_python_bytes(PyObject *p);
+
 /**
  * print_python_list - show basic information list pyobject
  * @p: adress of PyObject
@@ -9,7 +12,7 @@
 
 void print_python_list(PyObject *p)
 {
-	int i, size;
+	long unsigned int i, size;
 
 	size = ((PyVarObject *)p)->ob_size;
 	printf("[*] Python list info\n");
@@ -17,7 +20,7 @@ void print_python_list(PyObject *p)
 	printf("[*] Allocated = %lu\n", ((PyListObject *)p)->allocated);
 	for (i = 0; i < size; i++)
 	{
-		printf("Element %d: %s\n", i,
+		printf("Element %lu: %s\n", i,
 			((PyListObject *)p)->ob_item[i]->ob_type->tp_name);
 		if (!strcmp(((PyListObject *)p)->ob_item[i]->ob_type->tp_name, "bytes"))
 			print_python_bytes(((PyListObject *)p)->ob_item[i]);
@@ -31,9 +34,9 @@ void print_python_list(PyObject *p)
 
 void print_python_bytes(PyObject *p)
 {
-	size_t size, firstbyteslen;
+	long unsigned int size, firstbyteslen;
 	char *s;
-	int i;
+	long unsigned int i;
 
 	printf("[.] bytes object info\n");
 	if (strcmp(p->ob_type->tp_name, "bytes"))
