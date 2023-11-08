@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include <stdio.h>
 #include <Python.h>
 
@@ -8,22 +9,18 @@
 
 void print_python_list(PyObject *p)
 {
-	const char *tyype;
-	int i;
-	PyVarObject *obj = (PyVarObject *)p;
-	PyListObject *list = (PyListObject *)p;
-	int size = obj->ob_size;
-	int allocat = list->allocated;
+	int i, size;
+	int size = ((PyVarObject *)p)->ob_size;
 
 	printf("[*] Python list info\n");
-	printf("[*] Size of the Python List = %d\n", size);
-	printf("[*] Allocated = %d\n", allocat);
+	printf("[*] Size of the Python List = %lu\n", size);
+	printf("[*] Allocated = %lu\n", ((PyListObject *)p)->allocated);
 	for (i = 0; i < size; i++)
 	{
-		tyype = list->ob_item[i]->ob_type->tp_name;
-		printf("Element %d: %s\n", i, tyype);
-		if (strcmp(tyype, "bytes") == 0)
-			print_python_bytes(list->ob_item[i]);
+		printf("Element %d: %s\n", i,
+			((PyListObject *)p)->ob_item[i]->ob_type->tp_name);
+		if (!strcmp(((PyListObject *)p)->ob_item[i]->ob_type->tp_name, "bytes"))
+			print_python_bytes(((PyListObject *)p)->ob_item[i]);
 	}
 }
 
