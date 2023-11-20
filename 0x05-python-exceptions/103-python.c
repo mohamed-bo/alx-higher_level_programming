@@ -14,6 +14,7 @@ void print_python_list(PyObject *p)
 
 	size = ((PyVarObject *)p)->ob_size;
 	alloca = pyList->allocated;
+	fflush(stdout)
 	printf("[*] Python list info\n");
 	printf("[*] Size of the Python List = %d\n", size);
 	printf("[*] Allocated = %d\n", alloca);
@@ -36,6 +37,7 @@ void print_python_bytes(PyObject *p)
 	unsigned char i, numberFistPrinted;
 	PyBytesObject *bytesVar = (PyBytesObject *)p;
 
+	fflush(stdout)
 	printf("[.] bytes object info\n");
 	if (strcmp(p->ob_type->tp_name, "bytes") != 0)
 	{
@@ -65,6 +67,7 @@ void print_python_float(PyObject *p)
 	char *s;
 	double floa;
 
+	fflush(stdout)
 	printf("[.] float object info\n");
 	if (!PyFloat_CheckExact(p))
 	{
