@@ -1,31 +1,6 @@
 #include <stdio.h>
 #include <Python.h>
 
-/**
- * print_python_list - print some basic info about Python lists, Python bytes
- * @p: adress of PyObject
- */
-
-void print_python_list(PyObject *p)
-{
-	const char *type;
-	int i, size, alloca;
-	PyListObject *pyList = (PyListObject *)p;
-
-	size = ((PyVarObject *)p)->ob_size;
-	alloca = pyList->allocated;
-	fflush(stdout);
-	printf("[*] Python list info\n");
-	printf("[*] Size of the Python List = %d\n", size);
-	printf("[*] Allocated = %d\n", alloca);
-	for (i = 0; i < size; i++)
-	{
-		type = pyList->ob_item[i]->ob_type->tp_name;
-		printf("Element %d: %s\n", i, type);
-		if (strcmp(type, "bytes") == 0)
-			print_python_bytes(pyList->ob_item[i]);
-	}
-}
 
 /**
  * print_python_bytes - print info about object
@@ -55,6 +30,32 @@ void print_python_bytes(PyObject *p)
 	for (i = 0; i < numberFistPrinted; i++)
 		printf(" %02hhx", bytesVar->ob_sval[i]);
 	printf("\n");
+}
+
+/**
+ * print_python_list - print some basic info about Python lists, Python bytes
+ * @p: adress of PyObject
+ */
+
+void print_python_list(PyObject *p)
+{
+	const char *type;
+	int i, size, alloca;
+	PyListObject *pyList = (PyListObject *)p;
+
+	size = ((PyVarObject *)p)->ob_size;
+	alloca = pyList->allocated;
+	fflush(stdout);
+	printf("[*] Python list info\n");
+	printf("[*] Size of the Python List = %d\n", size);
+	printf("[*] Allocated = %d\n", alloca);
+	for (i = 0; i < size; i++)
+	{
+		type = pyList->ob_item[i]->ob_type->tp_name;
+		printf("Element %d: %s\n", i, type);
+		if (strcmp(type, "bytes") == 0)
+			print_python_bytes(pyList->ob_item[i]);
+	}
 }
 
 /**
