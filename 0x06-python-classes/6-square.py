@@ -12,8 +12,8 @@ class Square:
         Args:
             size (int): value of size of line
         """
-        self.__size = size
-        self.__position = position
+        self.size = size
+        self.position = position
 
     @property
     def size(self):
