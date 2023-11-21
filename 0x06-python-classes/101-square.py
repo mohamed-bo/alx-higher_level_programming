@@ -5,12 +5,12 @@
 class Square:
     """square class
     Attributes:
-        size (int): value of size of line
+        size (int): value of size of row
     """
     def __init__(self, size=0, position=(0, 0)):
         """constructer
         Args:
-            size (int): value of size of line
+            size (int): value of size of row
         """
         self.size = size
         self.position = position
@@ -67,7 +67,21 @@ class Square:
         if self.__size == 0:
             print()
         else:
-            for i in range(self.__position[1]):
+            for _ in range(self.__position[1]):
                 print()
-            for i in range(self.__size):
+            for _ in range(self.__size):
                 print(" " * self.__position[0] + "#" * self.__size)
+
+    def __str__(self):
+        """override when str
+
+        Returns:
+            str: the string presentation of square
+        """
+        if self.__size == 0:
+            return ''
+        firstEmpty = '\n' * self.position[1]
+        row = ' ' * self.position[0] + '#' * self.size
+        square = '\n'.join(row for _ in range(self.size))
+        square = firstEmpty + square
+        return square
