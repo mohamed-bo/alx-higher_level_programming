@@ -1,12 +1,15 @@
 #!/usr/bin/python3
 """
 "4-print_square" module.
-function that prints a square with the character #.
+function that prints
+a square with the character #.
 """
 
 
 def print_square(size):
-    """prints a square with the character #"""
+    """
+    prints a square with the character #
+    """
     if type(size) is not int:
         raise TypeError("size must be an integer")
     if size < 0:

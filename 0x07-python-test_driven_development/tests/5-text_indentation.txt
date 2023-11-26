@@ -1,0 +1,36 @@
+The ``5-`text_indentation` module
+=================================
+
+Using ``text_indentation``
+--------------------------
+
+Importing the function from the module:
+	>>> text_indentation = __import__("5-text_indentation").text_indentation
+
+testing for passing None:
+	>>> text_indentation(None)
+	Traceback (most recent call last):
+	...
+	TypeError: text must be a string
+
+testing for passing non-string type:
+	>>> text_indentation(1)
+	Traceback (most recent call last):
+	...
+	TypeError: text must be a string
+
+testing for endingin special char:
+	>>> text_indentation("""yretyeryee yreryt bergreg. dfgrg rehgreh? ghfht ytjty tbgfbde:""")
+	yretyeryee yreryt bergreg.
+	<BLANKLINE>
+	dfgrg rehgreh?
+	<BLANKLINE>
+	ghfht ytjty tbgfbde:
+	<BLANKLINE>
+
+testing for multiple spaces:
+	>>> text_indentation("   what.  are you?   ")
+	what.
+	<BLANKLINE>
+	are you?
+	<BLANKLINE>

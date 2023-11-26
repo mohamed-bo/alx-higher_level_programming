@@ -1,12 +1,15 @@
 #!/usr/bin/python3
 """
 "2-matrix_divided" module.
-function that divides all elements of a matrix.
+function that
+divides all elements of a matrix.
 """
 
 
 def matrix_divided(matrix, div):
-    """function that divides all elements of a matrix"""
+    """
+    function that divides all elements of a matrix
+    """
     if type(matrix) is not list:
         raise TypeError(
             "matrix must be a matrix (list of lists) of integers/floats")
