@@ -1,0 +1,77 @@
+The ``0-add_integer`` module
+============================
+
+Using ``add_integer``
+---------------------
+
+Importing the function add_integer.
+	>>> add_integer = __import__('0-add_integer').add_integer
+
+Checking if there module documantion:
+	>>> docu = __import__("0-add_integer").__doc__
+	>>> len(docu)> 1
+	True
+
+Checking for function documantion:
+	>>> fdocu = __import__("0-add_integer").add_integer.__doc__
+	>>> len(fdocu)> 1
+	True
+
+testing regular addition:
+	>>> add_integer(1, 3)
+	4
+
+testing positive with negative:
+	>>> add_integer(2, -6)
+	-4
+
+testing negative with positive:
+	>>> add_integer(-2, 8)
+	6
+
+testing one argument.
+	>>> add_integer(2)
+	100
+
+testing float with int:
+	>>> add_integer(3.2, 5)
+	8
+
+testing int with float:
+	>>> add_integer(10, 2.1)
+	12
+
+testing both float:
+	>>> add_integer(6.2, 3.2)
+	9
+
+testing int and a bool.
+	>>> add_integer(1, True)
+	Traceback (most recent call last):
+	...
+	TypeError: b must be an integer
+
+testing for NaN:
+	>>> add_integer(2, None)
+	Traceback (most recent call last):
+	...
+	TypeError: b must be an integer
+
+testing a string and int.
+	>>> add_integer('a', 2)
+	Traceback (most recent call last):
+	...
+	TypeError: a must be an integer
+
+testing no args:
+	>>> add_integer()
+	Traceback (most recent call last):
+	...
+	TypeError: add_integer() missing 1 required positional argument: 'a'
+
+testing more than 2 args:
+	>>> add_integer(1, 2, 3)
+	Traceback (most recent call last):
+	...
+	TypeError: add_integer() takes from 1 to 2 positional arguments but 3 were given
+
