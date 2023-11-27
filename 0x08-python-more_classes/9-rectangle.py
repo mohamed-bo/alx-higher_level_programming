@@ -14,7 +14,7 @@ class Rectangle:
     @classmethod
     def square(cls, size=0):
         """new Rectangle instance square"""
-        return cls(size, size)
+        return cls(int(size), int(size))
 
     def __init__(self, width=0, height=0):
         """Initializes Rectangle"""
