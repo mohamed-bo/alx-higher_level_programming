@@ -43,6 +43,7 @@ class Rectangle:
         if value < 0:
             raise ValueError("height must be >= 0")
         self.__height = value
+
     def area(self):
         """returns the rectangle area"""
         return self.__width * self.__height
@@ -60,11 +61,10 @@ class Rectangle:
         return "\n".join("#" * self.__width for i in range(self.__height))
 
     def __repr__(self):
-        """string representation of the rectangle  to recreate a new instance by using eval()"""
+        """string representation of the rectangle .. by using eval()"""
         return "Rectangle({:d}, {:d})".format(self.__width, self.__height)
 
     def __del__(self):
         """called whene class deleted"""
         print("Bye rectangle...")
         Rectangle.number_of_instances -= 1
-
