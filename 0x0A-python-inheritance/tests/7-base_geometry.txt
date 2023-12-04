@@ -1,0 +1,35 @@
+Module ``7-base_geometry``
+==========================
+
+import `integer_validator`
+__________________________
+
+Import function from module:
+    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+Correct Class Type test:
+    >>> basegeo = BaseGeometry()
+    >>> type(basegeo) == BaseGeometry
+    True
+
+check area:
+    >>> type(BaseGeometry.__dict__['area'])
+    <class 'function'>
+
+check method area:
+    >>> basegeo.area()
+    Traceback (most recent call last):
+    Exception: area() is not implemented
+
+normal:
+    >>> basegeo.integer_validator("floo", 3)
+
+integer_validator method:
+    >>> basegeo.integer_validator("flo", 3.0)
+    Traceback (most recent call last):
+    TypeError: flo must be an integer
+
+integer_validator method 0 value:
+    >>> basegeo.integer_validator("tes", 0)
+    Traceback (most recent call last):
+    ValueError: tes must be greater than 0
