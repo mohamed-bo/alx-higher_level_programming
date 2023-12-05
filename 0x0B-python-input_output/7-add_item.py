@@ -13,6 +13,6 @@ try:
     jso = load_from_json_file(fn)
 except FileNotFoundError:
     jso = []
-for i in range(1, len(args)):
-    jso.append(args[i])
+for i in range(1, len(sys.argv)):
+    jso.append(sys.argv[i])
 save_to_json_file(jso, fn)
