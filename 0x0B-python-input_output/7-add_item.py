@@ -9,9 +9,10 @@ save_to_json_file = __import__('5-save_to_json_file').save_to_json_file
 load_from_json_file = __import__('6-load_from_json_file').load_from_json_file
 
 fn = "add_item.json"
-if os.path.isfile(fn):
-    argvv = load_from_json_file(fn)
-else:
-    argvv = []
-argvv.extend(sys.argv[1:])
-save_to_json_file(argvv, fn)
+try:
+    jso = load_from_json_file(fn)
+except FileNotFoundError:
+    jso = []
+for i in range(1, len(args)):
+    jso.append(args[i])
+save_to_json_file(jso, fn)
