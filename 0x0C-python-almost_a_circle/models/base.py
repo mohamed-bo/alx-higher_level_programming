@@ -118,3 +118,35 @@ class Base:
                 return [cls.create(**d) for d in dictList]
         except IOError:
             return []
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """
+        Draw
+        """
+        tortule = turtle.Turtle()
+        tortule.title("draws")
+        tortule.screen.bgcolor("#ffffff")
+        turtle.hideturtle()
+        tortule.color("purple")
+        for r in list_rectangles:
+            tortule.up()
+            tortule.goto(r.x, r.y)
+            tortule.down()
+            for i in range(2):
+                tortule.forward(r.width)
+                tortule.left(90)
+                tortule.forward(r.height)
+                tortule.left(90)
+
+        tortule.color("#red")
+        for s in list_squares:
+            tortule.up()
+            tortule.goto(s.x, s.y)
+            tortule.down()
+            for i in range(2):
+                tortule.forward(s.width)
+                tortule.left(90)
+                tortule.forward(s.height)
+                tortule.left(90)
+        turtle.exitonclick()
