@@ -6,6 +6,7 @@ from models.square import Square
 import os
 import unittest
 
+
 class TestBase(unittest.TestCase):
     """test"""
 
@@ -41,7 +42,8 @@ class TestBase(unittest.TestCase):
 
     def test_to_json_string_rectangle_type(self):
         rectangle_instance = Rectangle(1, 2, 3, 4, 5)
-        self.assertEqual(str, type(Base.to_json_string([rectangle_instance.to_dictionary()])))
+        self.assertEqual(str, type(Base.to_json_string(
+            [rectangle_instance.to_dictionary()])))
 
     def test_to_json_string_empty_list(self):
         self.assertEqual("[]", Base.to_json_string([]))
