@@ -35,7 +35,8 @@ class Square(Rectangle):
         """
         overrise str
         """
-        return "[Square] ({}) {}/{} - {}".format(self.id, self.x, self.y, self.width)
+        return ("[Square] ({}) {}/{} - {}".format(self.id, self.x,
+                self.y, self.width))
 
     def update(self, *args, **kwargs):
         """Update attribute"""

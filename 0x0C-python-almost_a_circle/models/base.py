@@ -114,7 +114,7 @@ class Base:
                     instantList = ["id", "size", "x", "y"]
                 dictList = csv.DictReader(f, fieldnames=instantList)
                 dictList = [dict([key, int(value)] for key, value in d.items())
-                              for d in dictList]
+                            for d in dictList]
                 return [cls.create(**d) for d in dictList]
         except IOError:
             return []

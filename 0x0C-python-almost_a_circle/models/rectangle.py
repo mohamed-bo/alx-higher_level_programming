@@ -4,6 +4,7 @@ Rectangle module
 """
 from models.base import Base
 
+
 class Rectangle(Base):
     """
     Rectangle class
@@ -53,7 +54,7 @@ class Rectangle(Base):
     @x.setter
     def x(self, value):
         """setter of x"""
-        if type(value) != int:
+        if type(value) is not int:
             raise TypeError("x must be an integer")
         if value < 0:
             raise ValueError("x must be >= 0")
@@ -68,7 +69,7 @@ class Rectangle(Base):
     @y.setter
     def y(self, value):
         """setter of y"""
-        if type(value) != int:
+        if type(value) is not int:
             raise TypeError("y must be an integer")
         if value < 0:
             raise ValueError("y must be >= 0")
@@ -90,7 +91,8 @@ class Rectangle(Base):
 
     def __str__(self):
         """string representation of the class"""
-        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x, self.y, self.width, self.height)
+        return ("[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x,
+                self.y, self.width, self.height))
 
     def update(self, *args, **kwargs):
         """
