@@ -77,7 +77,7 @@ class Base:
                 dictList = Base.from_json_string(f.read())
                 result = []
                 for item in range(len(dictList)):
-                    result.append(cls.create(**list_cls[item]))
+                    result.append(cls.create(**dictList[item]))
                 return result
         except IOError:
             return []

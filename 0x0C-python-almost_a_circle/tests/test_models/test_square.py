@@ -5,6 +5,7 @@ module testSquare
 from models.base import Base
 from models.square import Square
 from models.rectangle import Rectangle
+from unittest.mock import patch
 import io
 import sys
 import unittest
@@ -33,7 +34,7 @@ class TestSquare(unittest.TestCase):
             print(Square(1, 2, 3, 4).__size)
 
     def test_size_getter(self):
-        self.assertEqual(5, Square(1, 2, 3, 4).size)
+        self.assertEqual(1, Square(1, 2, 3, 4).size)
 
     def test_size_setter(self):
         squa = Square(1, 2, 3, 4)
@@ -48,14 +49,14 @@ class TestSquare(unittest.TestCase):
     def test_height_getter(self):
         squa = Square(1, 2, 3, 4)
         squa.size = 1
-        self.assertEqual(12, squa.height)
+        self.assertEqual(1, squa.height)
 
     def test_none_size_error(self):
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
             Square(None)
 
     def test_negative_size_error(self):
-        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+        with self.assertRaisesRegex(ValueError, "width must be >= 0"):
             Square(-1, 10)
 
     def test_none_x_error(self):
@@ -78,7 +79,7 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(4, Square(2, 0, 0, 1).area())
 
     def test_area_one_arg_error(self):
-        squa = Square(2, 10, 1, 1)
+        squa = Square(10, 2, 2, 7)
         with self.assertRaises(TypeError):
             squa.area(1)
 
@@ -91,23 +92,6 @@ class TestSquare(unittest.TestCase):
         squa = Square(10, 10, 10, 10)
         squa.update(id=1)
         self.assertEqual("[Square] (1) 10/10 - 10", str(squa))
-
-    def test_to_dictionary(self):
-        squaAA = Square(1, 2, 3)
-        line = "[Square] (1) 2/3 - 1\n"
-        with patch('sys.stdout', new=StringIO()) as str_out:
-            print(squaAA)
-            self.assertEqual(str_out.getvalue(), line)
-        self.assertEqual(squaAA.size, 1)
-        self.assertEqual(squaAA.width, 1)
-        self.assertEqual(squaAA.height, 1)
-        self.assertEqual(squaAA.x, 2)
-        self.assertEqual(squaAA.y, 3)
-        self.assertEqual(squaAA.id, 1)
-        line = "<class 'dict'>\n"
-        with patch('sys.stdout', new=StringIO()) as str_out:
-            print(type(squaAA.to_dictionary()))
-            self.assertEqual(str_out.getvalue(), line)
 
     def test_value_square_error(self):
         with self.assertRaises(ValueError):

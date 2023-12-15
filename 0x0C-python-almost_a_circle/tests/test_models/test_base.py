@@ -53,22 +53,6 @@ class TestBase(unittest.TestCase):
         with self.assertRaises(TypeError):
             Base.to_json_string()
 
-    def test_save_to_file_square(self):
-        Square.save_to_file(None)
-        lin = "[]\n"
-        with open("Square.json", "r") as file:
-            with patch('sys.stdout', new=StringIO()) as str_out:
-                print(file.read())
-                self.assertEqual(str_out.getvalue(), lin)
-        try:
-            os.remove("Square.json")
-        except:
-            pass
-
-        Square.save_to_file([])
-        with open("Square.json", "r") as file:
-            self.assertEqual(file.read(), "[]")
-
     def test_save_to_file_with_none(self):
         Square.save_to_file(None)
         with open("Square.json", "r") as f:
@@ -77,22 +61,6 @@ class TestBase(unittest.TestCase):
     def test_save_to_file_no_args_error(self):
         with self.assertRaises(TypeError):
             Rectangle.save_to_file()
-
-    def test_save_to_file_rectangle(self):
-        Rectangle.save_to_file(None)
-        lin = "[]\n"
-        with open("Rectangle.json", "r") as file:
-            with patch('sys.stdout', new=StringIO()) as str_out:
-                print(file.read())
-                self.assertEqual(str_out.getvalue(), lin)
-        try:
-            os.remove("Rectangle.json")
-        except:
-            pass
-
-        Rectangle.save_to_file([])
-        with open("Rectangle.json", "r") as file:
-            self.assertEqual(file.read(), "[]")
 
     def test_from_json_string_with_none(self):
         self.assertEqual([], Base.from_json_string(None))

@@ -10,7 +10,7 @@ class Square(Rectangle):
     """
     square class
     """
-    def __init__(self, size):
+    def __init__(self, size, x=0, y=0, id=None):
         """
         initialize
         """
@@ -35,8 +35,7 @@ class Square(Rectangle):
         """
         overrise str
         """
-        return "[Square] ({}) {}/{} - {}".format
-            (self.id, self.x, self.y, self.width)
+        return "[Square] ({}) {}/{} - {}".format(self.id, self.x, self.y, self.width)
 
     def update(self, *args, **kwargs):
         """Update attribute"""

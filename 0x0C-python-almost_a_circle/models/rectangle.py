@@ -90,8 +90,7 @@ class Rectangle(Base):
 
     def __str__(self):
         """string representation of the class"""
-        return "[Rectangle] ({}) {}/{} - {}/{}".format
-            (self.id, self.x, self.y, self.width, self.height)
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x, self.y, self.width, self.height)
 
     def update(self, *args, **kwargs):
         """
@@ -125,11 +124,6 @@ class Rectangle(Base):
     def __repr__(self):
         """string representation of the rectangle .. by using eval()"""
         return "Rectangle({:d}, {:d})".format(self.__width, self.__height)
-
-    def __del__(self):
-        """called whene class deleted"""
-        print("Bye rectangle...")
-        Rectangle.number_of_instances -= 1
 
     def perimeter(self):
         """returns the rectangle perimeter"""
