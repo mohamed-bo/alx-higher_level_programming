@@ -11,7 +11,7 @@ if __name__ == "__main__":
                          db=sys.argv[3])
     crusorr = db.cursor()
     crusorr.execute("SELECT * FROM states WHERE name = %s ORDER BY id ASC",
-                    (sys.argv[4]))
+                    (sys.argv[4],))
     rows = crusorr.fetchall()
     for i in rows:
         print(i)
