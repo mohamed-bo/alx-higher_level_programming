@@ -4,7 +4,7 @@ fetches
 """
 if __name__ == "__main__":
     from urllib.request import Request, urlopen
-    url = 'https://intranet.hbtn.io/status'
+    url = 'https://alx-intranet.hbtn.io/status'
     with urlopen(url) as response:
         html = response.read()
         print("Body response:")
