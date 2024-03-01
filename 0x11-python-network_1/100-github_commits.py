@@ -8,7 +8,7 @@ import requests
 
 if __name__ == '__main__':
     req = requests.get('https://api.github.com/repos/{}/{}/commits'
-                     .format(argv[2], argv[1]))
+                       .format(argv[2], argv[1]))
     comts = req.json()
     for commit in comts[:10]:
         print(commit.get('sha'), end=': ')
