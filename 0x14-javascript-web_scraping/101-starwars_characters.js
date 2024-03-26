@@ -8,16 +8,25 @@ request(Api, function (err, res, body) {
     console.log(err);
   } else if (res.statusCode === 200) {
     body = JSON.parse(body);
-    for (const char in body.characters) {
-      request(body.characters[char], function (err, res, body) {
-        if (err) {
-          console.log(err);
-        } else if (res.statusCode === 200) {
-          console.log(JSON.parse(body).name);
-        }
-      });
+    const characters = body.characters;
+    let count = 0;
+
+    function getCharacterName (index) {
+      if (index < characters.length) {
+        request(characters[index], function (err, res, body) {
+          if (err) {
+            console.log(err);
+          } else if (res.statusCode === 200) {
+            console.log(JSON.parse(body).name);
+            count++;
+            getCharacterName(count);
+          }
+        });
+      }
     }
+
+    getCharacterName(0);
   } else {
-    console.log('Erorr Code:' + res.statusCode);
+    console.log('Error Code:' + res.statusCode);
   }
 });
