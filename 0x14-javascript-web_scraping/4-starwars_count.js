@@ -2,7 +2,7 @@
 const request = require('request');
 
 request(process.argv[2], function (_error, _res, body) {
-  bodyParsed = JSON.parse(body).results;
+  const bodyParsed = JSON.parse(body).results;
   let occurenceNumber = 0;
   for (let i = 0; i < bodyParsed.length; ++i) {
     const chrcts = bodyParsed[i].chrcts;
